@@ -1,0 +1,14 @@
+.mdl-grid
+  %h2 新規投稿
+
+- if post.errors.present?
+  .mdl-grid
+    = post.errors.full_messages.join(', ')
+
+.mdl-grid
+  = form_for post do |f|
+    .mdl-textfield.mdl-js-textfield
+      = f.text_field :body, class: 'mdl-textfield__input'
+      = f.label :body, class: 'mdl-textfield__label'
+    %div
+      = f.button nil, class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'

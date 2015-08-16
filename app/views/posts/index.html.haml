@@ -1,20 +1,7 @@
 .mdl-grid
   %h1 Posts
 
-.mdl-grid
-  %h2 新規投稿
-
-- if @post.present? && @post.errors.present?
-  .mdl-grid
-    = @post.errors.full_messages.join(', ')
-
-.mdl-grid
-  = form_for @post.presence || Post.new do |f|
-    .mdl-textfield.mdl-js-textfield
-      = f.text_field :body, class: 'mdl-textfield__input'
-      = f.label :body, class: 'mdl-textfield__label'
-    %div
-      = f.button nil, class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'
+= render 'form', post: @post.presence || Post.new
 
 .mdl-grid
   %h2 投稿一覧
@@ -26,7 +13,4 @@
         %th.mdl-data-table__cell--non-numeric Posts
         %th 投稿日時
     %tbody
-      - @posts.each do |post|
-        %tr
-          %td.mdl-data-table__cell--non-numeric= post.body
-          %td=l post.created_at
+      = render @posts
