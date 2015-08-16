@@ -1,6 +1,26 @@
-%h1 投稿一覧
 .mdl-grid
-  %table.mdl-cell--12-col.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp
+  %h1 Posts
+
+.mdl-grid
+  %h2 新規投稿
+
+- if @post.present? && @post.errors.present?
+  .mdl-grid
+    = @post.errors.full_messages.join(', ')
+
+.mdl-grid
+  = form_for @post.presence || Post.new do |f|
+    .mdl-textfield.mdl-js-textfield
+      = f.text_field :body, class: 'mdl-textfield__input'
+      = f.label :body, class: 'mdl-textfield__label'
+    %div
+      = f.button nil, class: 'mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect'
+
+.mdl-grid
+  %h2 投稿一覧
+
+.mdl-grid
+  %table.posts-table.mdl-data-table.mdl-js-data-table.mdl-shadow--2dp.mdl-cell.mdl-cell--12-col
     %thead
       %tr
         %th.mdl-data-table__cell--non-numeric Posts
