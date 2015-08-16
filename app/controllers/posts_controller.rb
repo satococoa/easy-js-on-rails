@@ -5,7 +5,11 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    @post.save
+    if @post.save
+      render :success, status: :created
+    else
+      render :error, status: :unprocessable_entity
+    end
   end
 
   private
