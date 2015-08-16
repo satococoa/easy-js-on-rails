@@ -5,6 +5,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
+    sleep 5
     if @post.save
       render :success, status: :created
     else
