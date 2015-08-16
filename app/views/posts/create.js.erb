@@ -1,0 +1,7 @@
+<% if @post.errors.present? %>
+alert("エラーが発生しました！！:\n<%= escape_javascript(@post.errors.full_messages.join(', ')) %>");
+<% else %>
+$("<%= escape_javascript(render @post) %>").prependTo(".posts-table > tbody");
+$('#post_body').val('');
+alert('保存されました！！');
+<% end %>

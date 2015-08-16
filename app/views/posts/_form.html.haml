@@ -6,7 +6,7 @@
     = post.errors.full_messages.join(', ')
 
 .mdl-grid
-  = form_for post do |f|
+  = form_for post, remote: true do |f|
     .mdl-textfield.mdl-js-textfield
       = f.text_field :body, class: 'mdl-textfield__input'
       = f.label :body, class: 'mdl-textfield__label'

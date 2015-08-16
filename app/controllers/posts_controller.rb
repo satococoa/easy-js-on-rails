@@ -5,12 +5,7 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_params)
-    if @post.save
-      redirect_to posts_url
-    else
-      @posts = Post.order('id DESC').all
-      render :index
-    end
+    @post.save
   end
 
   private
