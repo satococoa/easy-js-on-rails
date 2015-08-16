@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   def index
-    @posts = Post.all
+    @posts = Post.order('id DESC').all
   end
 
   def create
@@ -8,7 +8,7 @@ class PostsController < ApplicationController
     if @post.save
       redirect_to posts_url
     else
-      @posts = Post.all
+      @posts = Post.order('id DESC').all
       render :index
     end
   end
