@@ -1,1 +1,1 @@
-json.html (render @post)
+json.html render @post
